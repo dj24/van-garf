@@ -1,0 +1,34 @@
+{
+  "name": "vinext-tailwind",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.5.2",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-server-dom-webpack": "^19.2.8",
+    "vinext": "^1.0.0-beta.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "latest",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "^6.1.0",
+    "@vitejs/plugin-rsc": "^0.5.34",
+    "nitro": "^3.0.260610-beta",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "vite": "^8.2.2"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vinext dev",
+    "build": "vite build",
+    "start": "vinext start"
+  }
+}
