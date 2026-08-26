@@ -14,9 +14,9 @@ export default function Home() {
               "linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.08) 55%, white 100%)",
           }}
         />
-        <div className="relative z-10 mx-auto flex h-[100svh] max-w-[90rem] flex-col px-6 pb-8 pt-6 sm:px-10 sm:pb-10 sm:pt-9">
+        <div className="relative z-10 mx-auto flex h-[100svh] max-w-[90rem] flex-col px-4 pb-6 pt-4 sm:px-6 sm:pb-8 sm:pt-5">
           <header>
-            <img alt="van-garf" className="h-auto w-40 sm:w-56" src="/van-garf.png" />
+            <img alt="van-garf" className="h-auto w-24 sm:w-32" src="/van-garf.png" />
           </header>
 
           <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col justify-center py-8 text-center sm:py-10">
