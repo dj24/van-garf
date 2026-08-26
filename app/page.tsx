@@ -21,7 +21,7 @@ export default function Home() {
 
           <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col justify-center py-8 text-center sm:py-10">
             <div className="mx-auto max-w-3xl">
-              <h1 className="text-balance text-3xl font-semibold tracking-[-0.055em] text-slate-950 sm:text-5xl lg:text-6xl">
+              <h1 className="font-display text-balance text-3xl font-normal tracking-[-0.055em] text-slate-950 sm:text-5xl lg:text-6xl">
                 Making the everyday extraordinary.
               </h1>
               <p className="mx-auto mt-4 max-w-xl text-pretty text-sm leading-6 text-slate-800 sm:text-base sm:leading-7">
