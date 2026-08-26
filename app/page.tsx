@@ -15,8 +15,14 @@ export default function Home() {
           }}
         />
         <div className="relative z-10 mx-auto flex h-[100svh] max-w-[90rem] flex-col px-4 pb-6 pt-4 sm:px-6 sm:pb-8 sm:pt-5">
-          <header>
+          <header className="flex items-center justify-between">
             <img alt="van-garf" className="h-auto w-24 sm:w-32" src="/van-garf.png" />
+            <a
+              className="impasto-button inline-flex h-8 w-28 items-center justify-center px-3 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-white transition-transform hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 sm:h-9 sm:w-32 sm:text-xs"
+              href="#contact"
+            >
+              Contact us
+            </a>
           </header>
 
           <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col justify-center py-8 text-center sm:py-10">
@@ -27,6 +33,12 @@ export default function Home() {
               <p className="mx-auto mt-4 max-w-xl text-pretty text-sm leading-6 text-slate-800 sm:text-base sm:leading-7">
                 A new perspective, shaped with intention.
               </p>
+              <a
+                className="impasto-button mt-5 inline-flex h-11 w-36 items-center justify-center px-4 text-xs font-semibold uppercase tracking-[0.12em] text-white transition-transform hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 sm:mt-6 sm:h-12 sm:w-40"
+                href="#contact"
+              >
+                Contact us
+              </a>
             </div>
 
             <div

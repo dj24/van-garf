@@ -14,6 +14,13 @@
   font-family: "Young Serif", Georgia, serif;
 }
 
+.impasto-button {
+  background-image: url("/impasto-btn-md.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 body {
   margin: 0;
 }
