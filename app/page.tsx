@@ -18,7 +18,7 @@ export default function Home() {
           <header className="flex items-center justify-between">
             <img alt="van-garf" className="h-auto w-24 sm:w-32" src="/van-garf.png" />
             <a
-              className="impasto-button inline-flex h-11 w-36 items-center justify-center px-4 text-xs font-semibold text-white transition-transform hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 sm:h-12 sm:w-40"
+              className="impasto-button inline-flex h-11 w-36 items-center justify-center px-4 text-sm font-semibold text-white transition-transform hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 sm:h-12 sm:w-40"
               href="#contact"
             >
               Contact us
@@ -34,7 +34,7 @@ export default function Home() {
                 A new perspective, shaped with intention.
               </p>
               <a
-                className="impasto-button mt-5 inline-flex h-11 w-36 items-center justify-center px-4 text-xs font-semibold text-white transition-transform hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 sm:mt-6 sm:h-12 sm:w-40"
+                className="impasto-button mt-5 inline-flex h-11 w-36 items-center justify-center px-4 text-sm font-semibold text-white transition-transform hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 sm:mt-6 sm:h-12 sm:w-40"
                 href="#contact"
               >
                 Contact us
