@@ -29,3 +29,64 @@ body {
 a {
   color: inherit;
 }
+
+.gallery-shell {
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+}
+
+.gallery-track {
+  display: flex;
+  height: 100%;
+  width: max-content;
+  animation: gallery-scroll 110s linear infinite;
+  will-change: transform;
+}
+
+.gallery-track--paused {
+  animation-play-state: paused;
+}
+
+.gallery-group {
+  display: flex;
+  height: 100%;
+  flex-shrink: 0;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.gallery-card {
+  aspect-ratio: 9 / 16;
+  min-width: 0;
+  cursor: zoom-in;
+}
+
+@keyframes gallery-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+::view-transition-group(gallery-image) {
+  animation-duration: 560ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 60;
+}
+
+::view-transition-old(gallery-image),
+::view-transition-new(gallery-image) {
+  animation-duration: 560ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-track {
+    animation: none;
+  }
+
+  ::view-transition-group(gallery-image),
+  ::view-transition-old(gallery-image),
+  ::view-transition-new(gallery-image) {
+    animation-duration: 1ms;
+  }
+}
