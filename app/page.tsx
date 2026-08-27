@@ -4,15 +4,51 @@ import { useEffect, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
 
 const galleryImages = [
-  { id: "painted-hills", alt: "Sunlit hills above a calm blue lake" },
-  { id: "cobalt-wave", alt: "Blue ocean wave rolling toward shore" },
-  { id: "field-notes", alt: "Wild grasses glowing in the afternoon light" },
-  { id: "amber-rock", alt: "Warm sandstone formations in the desert" },
-  { id: "morning-glass", alt: "Modern building reflected in still water" },
-  { id: "soft-forest", alt: "Misty evergreen forest" },
-  { id: "coral-sky", alt: "Pink clouds over a distant mountain range" },
-  { id: "quiet-stone", alt: "Textured stones by the sea" },
-  { id: "golden-hour", alt: "Golden sun passing through tree branches" },
+  {
+    id: "grey-exterior",
+    src: "/gallery/van-grey-exterior.jpeg",
+    alt: "Grey Volkswagen camper van with roof awning",
+  },
+  {
+    id: "black-camper",
+    src: "/gallery/van-black-camper.jpeg",
+    alt: "Black Volkswagen camper van parked by fields",
+  },
+  {
+    id: "poptop",
+    src: "/gallery/van-poptop.jpeg",
+    alt: "Black camper van with its pop-top roof raised",
+  },
+  {
+    id: "finished-kitchen",
+    src: "/gallery/van-finished-kitchen.jpeg",
+    alt: "Finished van interior with kitchen and seating",
+  },
+  {
+    id: "cabin",
+    src: "/gallery/van-cabin.jpeg",
+    alt: "Finished camper van cabin and kitchen",
+  },
+  {
+    id: "rear-fitout",
+    src: "/gallery/van-rear-fitout.jpeg",
+    alt: "Camper van rear storage and interior fit-out",
+  },
+  {
+    id: "bed-platform",
+    src: "/gallery/van-bed-platform.jpeg",
+    alt: "Camper van bed platform and cabinets",
+  },
+  {
+    id: "side-cabinet",
+    src: "/gallery/van-side-cabinet.jpeg",
+    alt: "Camper van side cabinet and fitted window",
+  },
+  {
+    id: "rear-workspace",
+    src: "/gallery/van-rear-workspace.jpeg",
+    alt: "Camper van rear workspace with fitted storage",
+  },
 ];
 
 type GalleryItem = (typeof galleryImages)[number] & { key: string };
@@ -20,10 +56,6 @@ type GalleryItem = (typeof galleryImages)[number] & { key: string };
 type ViewTransitionDocument = Document & {
   startViewTransition?: (update: () => void) => { finished?: Promise<void> };
 };
-
-function imageUrl(id: string) {
-  return `https://picsum.photos/seed/${id}/720/1280`;
-}
 
 export default function Home() {
   const [isPaused, setIsPaused] = useState(false);
@@ -47,7 +79,7 @@ export default function Home() {
     };
   }, [selectedItem]);
 
-  const runViewTransition = (update: () => void) => {
+  const runViewTransition = (update: () => void, onFinish?: () => void) => {
     const transitionDocument = document as ViewTransitionDocument;
 
     if (!transitionDocument.startViewTransition) {
@@ -56,7 +88,10 @@ export default function Home() {
     }
 
     const transition = transitionDocument.startViewTransition(update);
-    void transition.finished?.finally(() => setTransitioningKey(null));
+    void transition.finished?.finally(() => {
+      setTransitioningKey(null);
+      onFinish?.();
+    });
   };
 
   const openLightbox = (item: GalleryItem) => {
@@ -74,11 +109,15 @@ export default function Home() {
   const closeLightbox = () => {
     if (!(document as ViewTransitionDocument).startViewTransition) {
       setSelectedItem(null);
+      setIsPaused(false);
       return;
     }
 
     flushSync(() => setTransitioningKey(selectedItem?.key ?? null));
-    runViewTransition(() => flushSync(() => setSelectedItem(null)));
+    runViewTransition(
+      () => flushSync(() => setSelectedItem(null)),
+      () => setIsPaused(false),
+    );
   };
 
   return (
@@ -125,7 +164,7 @@ export default function Home() {
 
             <section
               aria-label="Selected work gallery"
-              className="gallery-shell mt-8 h-[clamp(12rem,32svh,26rem)] w-full overflow-hidden rounded-2xl border border-white/50 bg-slate-200/75 p-2 shadow-[0_24px_70px_rgb(15_23_42_/_0.16)] backdrop-blur-sm sm:mt-10 sm:rounded-3xl sm:p-3"
+              className="gallery-shell relative left-1/2 mt-8 h-[clamp(12rem,32svh,26rem)] w-screen -translate-x-1/2 overflow-hidden sm:mt-10"
             >
               <div className={`gallery-track ${isPaused ? "gallery-track--paused" : ""}`}>
                 {[0, 1].map((copy) => (
@@ -149,8 +188,8 @@ export default function Home() {
                           <img
                             alt={image.alt}
                             className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-focus-visible:scale-105"
-                            loading={copy === 0 ? "eager" : "lazy"}
-                            src={imageUrl(image.id)}
+                            loading={copy === 0 && image.id === "grey-exterior" ? "eager" : "lazy"}
+                            src={image.src}
                             style={transitionStyle}
                           />
                           <span className="absolute inset-0 bg-slate-950/0 transition-colors duration-300 group-hover:bg-slate-950/10 group-focus-visible:bg-slate-950/10" />
@@ -183,7 +222,7 @@ export default function Home() {
             <img
               alt={selectedItem.alt}
               className="max-h-[calc(100svh-2rem)] max-w-[calc(100vw-2rem)] rounded-2xl object-contain shadow-2xl sm:max-h-[calc(100svh-4rem)] sm:max-w-[min(80vw,42rem)] sm:rounded-3xl"
-              src={imageUrl(selectedItem.id)}
+              src={selectedItem.src}
               style={{ viewTransitionName: "gallery-image" } as CSSProperties}
             />
             <button
