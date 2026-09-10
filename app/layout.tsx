@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   description: site.description,
   applicationName: site.name,
   robots: {
-    index: true,
+    index: false,
     follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    googleBot: { index: false, follow: true, "max-image-preview": "large" },
   },
   openGraph: {
     type: "website",
