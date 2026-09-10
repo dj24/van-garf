@@ -14,12 +14,14 @@
   font-family: "Young Serif", Georgia, serif;
 }
 
-.impasto-button {
-  background-image: url("/impasto-btn-md.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+.primary-button {
+  border-radius: 0.75rem;
+  background-color: #1d4ed8;
   color: #fff;
+}
+
+.primary-button:hover:not(:disabled) {
+  background-color: #1e40af;
 }
 
 body {
@@ -56,7 +58,7 @@ a {
 }
 
 .gallery-card {
-  aspect-ratio: 9 / 16;
+  aspect-ratio: 3 / 4;
   min-width: 0;
   cursor: zoom-in;
 }
