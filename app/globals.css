@@ -14,14 +14,63 @@
   font-family: "Young Serif", Georgia, serif;
 }
 
+.hero-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  margin-bottom: -60px;
+}
+
+@media (min-width: 640px) {
+  .hero-nav {
+    margin-bottom: -68px;
+  }
+}
+
+#contact {
+  scroll-margin-top: 7rem;
+}
+
+.hero-nav::before {
+  content: "";
+  position: absolute;
+  top: -2rem;
+  bottom: -3rem;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 0;
+}
+
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  inset: -3rem -2rem;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  -webkit-mask-image: radial-gradient(ellipse, black 45%, transparent 72%);
+  mask-image: radial-gradient(ellipse, black 45%, transparent 72%);
+}
+
 .primary-button {
-  border-radius: 0.75rem;
-  background-color: #1d4ed8;
+  border-radius: 0;
+  background-color: #000;
   color: #fff;
 }
 
 .primary-button:hover:not(:disabled) {
-  background-color: #1e40af;
+  background-color: #171717;
 }
 
 body {

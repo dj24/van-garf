@@ -143,43 +143,44 @@ export default function Home() {
 
   return (
     <main className="bg-white">
+      <header className="hero-nav mx-auto flex h-[60px] max-w-[90rem] items-center justify-between px-4 pt-4 sm:h-[68px] sm:px-6 sm:pt-5">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <img
+            alt=""
+            className="van-icon h-8 w-8 shrink-0 object-contain sm:h-9 sm:w-9"
+            height={1230}
+            src="/van-icon.png"
+            width={1278}
+          />
+          <span className="font-display whitespace-nowrap text-2xl font-normal tracking-[-0.055em] text-slate-950 sm:text-3xl">
+            VanGarf
+          </span>
+        </div>
+        <a
+          className="primary-button inline-flex h-11 w-36 items-center justify-center px-4 text-sm font-semibold text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 sm:h-12 sm:w-40"
+          href="#contact"
+        >
+          Contact us
+        </a>
+      </header>
       <section
         aria-label="van-garf"
-        className="relative isolate h-[100svh] overflow-hidden bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/sky-paint.png')" }}
+        className="relative isolate h-[80svh] overflow-hidden"
       >
         <div
           aria-hidden="true"
-          className="absolute inset-0"
+          className="absolute inset-x-0 top-0 h-[80svh] bg-cover bg-bottom bg-no-repeat"
           style={{
-            background:
-              "linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.08) 55%, white 100%)",
+            backgroundImage: "url('/van-bg.png')",
           }}
         />
-        <div className="relative z-10 mx-auto flex h-[100svh] max-w-[90rem] flex-col px-4 pb-6 pt-4 sm:px-6 sm:pb-8 sm:pt-5">
-          <header className="flex items-center justify-between">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <img
-                alt=""
-                className="van-icon h-8 w-8 shrink-0 object-contain sm:h-9 sm:w-9"
-                height={1230}
-                src="/van-icon.png"
-                width={1278}
-              />
-              <span className="font-display whitespace-nowrap text-2xl font-normal tracking-[-0.055em] text-slate-950 sm:text-3xl">
-                VanGarf
-              </span>
-            </div>
-            <a
-              className="primary-button inline-flex h-11 w-36 items-center justify-center px-4 text-sm font-semibold text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-950 sm:h-12 sm:w-40"
-              href="#contact"
-            >
-              Contact us
-            </a>
-          </header>
-
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-b from-white/0 to-white sm:h-24"
+        />
+        <div className="relative z-10 mx-auto flex h-full max-w-[90rem] flex-col px-4 pb-6 pt-[60px] sm:px-6 sm:pb-8 sm:pt-[68px]">
           <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col justify-center py-8 text-center sm:py-10">
-            <div className="mx-auto max-w-3xl">
+            <div className="hero-copy mx-auto max-w-3xl">
               <h1 className="font-display text-balance text-3xl font-normal tracking-[-0.055em] text-slate-950 sm:text-5xl lg:text-6xl">
                 Care for your home on wheels.
               </h1>
@@ -194,50 +195,50 @@ export default function Home() {
                 Contact us
               </a>
             </div>
-
-            <section
-              aria-label="Selected work gallery"
-              className="gallery-shell relative left-1/2 mt-8 h-[clamp(12rem,32svh,26rem)] w-screen -translate-x-1/2 overflow-hidden sm:mt-10"
-            >
-              <div className={`gallery-track ${isPaused ? "gallery-track--paused" : ""}`}>
-                {[0, 1].map((copy) => (
-                  <div className="gallery-group" key={copy}>
-                    {galleryImages.map((image) => {
-                      const item = { ...image, key: `${image.id}-${copy}` };
-                      const isTransitionSource =
-                        transitioningKey === item.key && selectedItem === null;
-                      const transitionStyle = isTransitionSource
-                        ? ({ viewTransitionName: "gallery-image" } as CSSProperties)
-                        : undefined;
-
-                      return (
-                        <button
-                          aria-label={`Open ${image.alt}`}
-                          className="gallery-card group relative h-full shrink-0 overflow-hidden rounded-xl text-left outline-none sm:rounded-2xl"
-                          key={item.key}
-                          onClick={() => openLightbox(item)}
-                          type="button"
-                        >
-                          <img
-                            alt={image.alt}
-                            className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-focus-visible:scale-105"
-                            loading={copy === 0 && image.id === "grey-exterior" ? "eager" : "lazy"}
-                            src={image.src}
-                            style={transitionStyle}
-                          />
-                          <span className="absolute inset-0 bg-slate-950/0 transition-colors duration-300 group-hover:bg-slate-950/10 group-focus-visible:bg-slate-950/10" />
-                        </button>
-                      );
-                    })}
-                  </div>
-                ))}
-              </div>
-              <p className="pointer-events-none absolute sr-only">
-                A continuously scrolling collection of images. Select an image to view it larger.
-              </p>
-            </section>
           </div>
         </div>
+      </section>
+
+      <section
+        aria-label="Selected work gallery"
+        className="gallery-shell relative mt-8 h-[clamp(12rem,32svh,26rem)] w-full overflow-hidden sm:mt-10"
+      >
+        <div className={`gallery-track ${isPaused ? "gallery-track--paused" : ""}`}>
+          {[0, 1].map((copy) => (
+            <div className="gallery-group" key={copy}>
+              {galleryImages.map((image) => {
+                const item = { ...image, key: `${image.id}-${copy}` };
+                const isTransitionSource =
+                  transitioningKey === item.key && selectedItem === null;
+                const transitionStyle = isTransitionSource
+                  ? ({ viewTransitionName: "gallery-image" } as CSSProperties)
+                  : undefined;
+
+                return (
+                  <button
+                    aria-label={`Open ${image.alt}`}
+                    className="gallery-card group relative h-full shrink-0 overflow-hidden rounded-xl text-left outline-none sm:rounded-2xl"
+                    key={item.key}
+                    onClick={() => openLightbox(item)}
+                    type="button"
+                  >
+                    <img
+                      alt={image.alt}
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-focus-visible:scale-105"
+                      loading={copy === 0 && image.id === "grey-exterior" ? "eager" : "lazy"}
+                      src={image.src}
+                      style={transitionStyle}
+                    />
+                    <span className="absolute inset-0 bg-slate-950/0 transition-colors duration-300 group-hover:bg-slate-950/10 group-focus-visible:bg-slate-950/10" />
+                  </button>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+        <p className="pointer-events-none absolute sr-only">
+          A continuously scrolling collection of images. Select an image to view it larger.
+        </p>
       </section>
 
       <section
