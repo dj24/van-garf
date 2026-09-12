@@ -1,4 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "vite build"
+  "buildCommand": "vite build",
+  "images": {
+    "sizes": [240, 320, 480, 640, 960, 1440, 2048],
+    "domains": [],
+    "localPatterns": [{ "pathname": "^/gallery/.*$", "search": "" }],
+    "qualities": [75],
+    "formats": ["image/avif", "image/webp"],
+    "minimumCacheTTL": 86400
+  }
 }

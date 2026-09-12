@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-10T08:12:59.822Z",
+  "date": "2026-09-12T10:13:42.975Z",
   "preset": "node-server",
   "framework": {
     "name": "nitro",
@@ -13,5 +13,37 @@
   "commands": {
     "preview": "node ./server/index.mjs"
   },
-  "config": {}
+  "config": {
+    "vercel": {
+      "config": {
+        "version": 3,
+        "images": {
+          "sizes": [
+            240,
+            320,
+            480,
+            640,
+            960,
+            1440,
+            2048
+          ],
+          "domains": [],
+          "localPatterns": [
+            {
+              "pathname": "^/gallery/.*$",
+              "search": ""
+            }
+          ],
+          "qualities": [
+            75
+          ],
+          "formats": [
+            "image/avif",
+            "image/webp"
+          ],
+          "minimumCacheTTL": 86400
+        }
+      }
+    }
+  }
 }
