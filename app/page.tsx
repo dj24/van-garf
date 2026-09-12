@@ -74,13 +74,12 @@ export default function Home() {
   const [formMessage, setFormMessage] = useState<"success" | "error" | null>(null);
   const submissionPending = useRef(false);
   const galleryRef = useRef<HTMLDivElement>(null);
-  const heroCopyRef = useRef<HTMLDivElement>(null);
   const contactDetailsRef = useRef<HTMLDivElement>(null);
   const galleryResumeAt = useRef(0);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const elements = [heroCopyRef.current, contactDetailsRef.current];
+    const elements = [contactDetailsRef.current];
     if (reducedMotion.matches || !("IntersectionObserver" in window)) {
       elements.forEach((element) => {
         if (element) element.dataset.revealReady = "true";
@@ -345,7 +344,7 @@ export default function Home() {
         />
         <div className="relative z-10 mx-auto flex h-full max-w-[90rem] flex-col px-4 pb-6 pt-[64px] sm:px-6 sm:pb-8 sm:pt-[68px]">
           <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col justify-center py-8 text-center sm:py-10">
-            <div ref={heroCopyRef} className="viewport-reveal hero-copy mx-auto max-w-3xl">
+            <div className="hero-copy mx-auto max-w-3xl">
               <h1 className="font-display text-balance text-2xl font-normal tracking-[-0.055em] text-slate-950 sm:text-4xl lg:text-5xl">
                 Care for your home on wheels.
               </h1>
