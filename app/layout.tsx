@@ -10,11 +10,6 @@ export const metadata: Metadata = {
   title: site.title,
   description: site.description,
   applicationName: site.name,
-  robots: {
-    index: false,
-    follow: true,
-    googleBot: { index: false, follow: true, "max-image-preview": "large" },
-  },
   openGraph: {
     type: "website",
     locale: "en_GB",
